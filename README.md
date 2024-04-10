@@ -1,7 +1,8 @@
-*insert the two bages here*
-# App Title
+*insert the two badges here*
 
 ![Lint-free](https://github.com/nyu-software-engineering/containerized-app-exercise/actions/workflows/lint.yml/badge.svg)
+
+# App Title
 
 # Containerized App Exercise
 
