@@ -1,3 +1,4 @@
+*insert the two bages here*
 # App Title
 
 ![Lint-free](https://github.com/nyu-software-engineering/containerized-app-exercise/actions/workflows/lint.yml/badge.svg)
@@ -6,7 +7,7 @@
 
 Build a containerized app that uses machine learning. See [instructions](./instructions.md) for details.
 
-*insert the two bages here, also delete the above.*
+*delete the above.*
 
 ## Description
 
@@ -21,6 +22,9 @@ Build a containerized app that uses machine learning. See [instructions](./instr
 ### How to import starter data
 
 *instructions for how to import any starter data into the database, if necessary for the system to operate correctly at first.*
+
+### How to run tests
+*instructions on how to run tests and whatnot will be put here.*
 
 ## Contributors
 * [Hannah Horiuchi](https://github.com/hah8236)
