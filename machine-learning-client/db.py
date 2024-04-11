@@ -1,8 +1,9 @@
 from pymongo import MongoClient
+from config import MONGODB_URI
 
-client = MongoClient("mongodb://localhost:27017")
-db = client["grammar_checker"]
-collection = db["results"]
+client = MongoClient(MONGODB_URI)
+db = client["Project4"]
+collection = db["GrammarCheck"]
 
 def store_results(original_passage, fixed_passage, error_analysis):
     document = {

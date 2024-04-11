@@ -2,13 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home Page</title>
+    <title>Grammar Checker</title>
 </head>
 <body>
-    <h1>Welcome!</h1>
-    <form method="POST" action="/input">
-        <textarea name="inputText"></textarea>
-        <input type="submit" value="Check!"/>
+    <h1>Grammar Checker</h1>
+    <form method="POST">
+        <label for="inputText">Enter your text:</label><br>
+        <textarea id="inputText" name="inputText" rows="5" cols="50"></textarea><br>
+        <input type="submit" value="Check Grammar">
     </form>
+
+    {% if original_text %}
+        <hr>
+        <h2>Grammar Check Result</h2>
+        <h3>Original Text:</h3>
+        <p>{{ original_text }}</p>
+        <h3>Fixed Text:</h3>
+        <p>{{ fixed_text }}</p>
+        <h3>Error Analysis:</h3>
+        <ul>
+            {% for category, count in error_analysis.items() %}
+                <li>{{ category }}: {{ count }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
 </body>
 </html>
