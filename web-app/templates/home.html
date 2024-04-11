@@ -7,28 +7,18 @@
 <body>
     <h1>Grammar Checker</h1>
     <form method="POST">
-        <label for="inputText">Enter your text:</label><br>
-        <textarea id="inputText" name="inputText" rows="5" cols="50"></textarea><br>
+        <textarea name="passage" rows="10" cols="50"></textarea><br>
         <input type="submit" value="Check Grammar">
     </form>
-
-    {% if original_text %}
-        <hr>
-        <h2>Grammar Check Result</h2>
-        <h3>Original Text:</h3>
-        <p>{{ original_text }}</p>
-        <h3>Fixed Text:</h3>
-        <p>{{ fixed_text }}</p>
-        <h3>Error Analysis:</h3>
+    {% if fixed_passage %}
+        <h2>Fixed Passage:</h2>
+        <p>{{ fixed_passage }}</p>
+        <h2>Error Analysis:</h2>
         <ul>
             {% for category, count in error_analysis.items() %}
                 <li>{{ category }}: {{ count }}</li>
             {% endfor %}
         </ul>
-    {% endif %}
-
-    {% if error %}
-        <p style="color: red;">{{ error }}</p>
     {% endif %}
 </body>
 </html>
