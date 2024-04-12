@@ -2,7 +2,7 @@
 
 ![Lint-free](https://github.com/nyu-software-engineering/containerized-app-exercise/actions/workflows/lint.yml/badge.svg)
 
-# App Title
+# App Title 
 
 # Containerized App Exercise
 
