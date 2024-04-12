@@ -1,23 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Grammar Checker</title>
+    <title>Grammar Check</title>
 </head>
 <body>
-    <h1>Grammar Checker</h1>
+    <h1>Grammar Check</h1>
     <form method="POST">
         <textarea name="passage" rows="10" cols="50"></textarea><br>
         <input type="submit" value="Check Grammar">
     </form>
     {% if fixed_passage %}
+        <h2>Original Passage:</h2>
+        <p>{{ passage }}</p>
         <h2>Fixed Passage:</h2>
         <p>{{ fixed_passage }}</p>
         <h2>Error Analysis:</h2>
         <ul>
-            {% for category, count in error_analysis.items() %}
-                <li>{{ category }}: {{ count }}</li>
-            {% endfor %}
+            <li>Spelling: {{ error_analysis["spelling"] }}</li>
+            <li>Verb/Tense: {{ error_analysis["verb/tense"] }}</li>
+            <li>Article/Preposition: {{ error_analysis["article/preposition"] }}</li>
+            <li>Other: {{ error_analysis["other"] }}</li>
         </ul>
     {% endif %}
 </body>

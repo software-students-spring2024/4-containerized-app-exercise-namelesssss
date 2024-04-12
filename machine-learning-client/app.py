@@ -8,9 +8,9 @@ app = Flask(__name__, template_folder='../web-app/templates')
 def home():
     if request.method == 'POST':
         passage = request.form['passage']
-        original_passage, fixed_passage, error_analysis = check_grammar(passage)
-        store_results(original_passage, fixed_passage, error_analysis)
-        return render_template('home.html', fixed_passage=fixed_passage, error_analysis=error_analysis)
+        original_passage, fixed_passage, error_analysis, api_response = check_grammar(passage)
+        store_results(original_passage, fixed_passage, error_analysis, api_response)
+        return render_template('home.html', passage=original_passage, fixed_passage=fixed_passage, error_analysis=error_analysis)
     return render_template('home.html')
 
 @app.route("/analyze", methods=["POST"])
@@ -20,8 +20,8 @@ def analyze_passage():
     except KeyError:
         return jsonify({"error": "Missing 'passage' key in the request payload"}), 400
 
-    original_passage, fixed_passage, error_analysis = check_grammar(passage)
-    store_results(original_passage, fixed_passage, error_analysis)
+    original_passage, fixed_passage, error_analysis, api_response = check_grammar(passage)
+    store_results(original_passage, fixed_passage, error_analysis, api_response)
     return jsonify({"fixed_passage": fixed_passage, "error_analysis": error_analysis})
 
 if __name__ == "__main__":
