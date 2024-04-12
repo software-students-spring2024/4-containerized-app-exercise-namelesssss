@@ -1,0 +1,5 @@
+flask
+requests
+pymongo
+openai
+config
