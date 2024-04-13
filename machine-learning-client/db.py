@@ -5,6 +5,7 @@ database for machine-learning client
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from app_config import MONGODB_URI
+#pylint: disable=broad-exception-caught
 
 uri = MONGODB_URI
 client = MongoClient(uri,
@@ -21,6 +22,9 @@ except Exception as e:
 db = client["Project4"]
 collection = db["GrammarCheck"]
 
+'''
+store results into database
+'''
 def store_results(original_passage, fixed_passage, error_analysis, api_response):
     document = {
         "original_passage": original_passage,

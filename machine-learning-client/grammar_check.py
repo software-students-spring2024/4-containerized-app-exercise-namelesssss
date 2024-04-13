@@ -1,30 +1,40 @@
+'''
+grammar checking file for our machine-learning-client
+'''
+
 import logging
 import openai
 from app_config import OPENAI_API_KEY
+#pylint: disable=line-too-long
+#pylint: disable=no-member
 
 openai.api_key = OPENAI_API_KEY
 
 logger = logging.getLogger(__name__)
 
+'''
+Grammar checker from openAI
+'''
 def check_grammar(passage):
     try:
         prompt = (
-            f"Check the grammar of the text and provide the number of grammar errors sorted by type, along with "
-            f"a corrected version of the text. strictly follow the following format for the result output with "
-            f"no additional outputs: corrected text: [text]\n error summary: "
-            f"[spelling:[number]];[verb/tense:[number]];[article/preposition:[number]];"
-            f"[other:[number]]\n\nText: {passage}"
+            f"Check the grammar of the text and provide the number of grammar errors sorted by type, "
+            f"along with a corrected version of the text. strictly follow the following format "
+            f"for the result output with no additional outputs: corrected text: "
+            f"[text]\n error summary: [spelling:[number]];[verb/tense:[number]];"
+            f"[article/preposition:[number]];[other:[number]]\n\nText: {passage}"
         )
         response = openai.ChatCompletion.create(
             model="gpt-4",
             messages=[
                 { 
                     "role": "user",
-                    "content": "Check the grammar of the provided text and provide the number of grammar errors sorted "
-                               "by type, along with a corrected version of the text. strictly follow the following "
-                               "format for the result output with no additional outputs: corrected text: "
-                               "[text]\n error summary: [spelling:[number]];[verb/tense:[number]];"
-                               "[article/preposition:[number]];[other:[number]]\\n\\nText: {\"I drank juice.\"}"
+                    "content": "Check the grammar of the provided text and provide the number of grammar "
+                               "errors sorted by type, along with a corrected version of the text. "
+                               "strictly follow the following format for the result output with no "
+                               "additional outputs: corrected text: [text]\n error summary: "
+                               "[spelling:[number]];[verb/tense:[number]];[article/preposition:[number]];"
+                               "[other:[number]]\\n\\nText: {\"I drank juice.\"}"
                 },
                 {
                     "role": "assistant",
@@ -59,12 +69,15 @@ def check_grammar(passage):
         error_analysis = analyze_errors(error_summary)
         return passage, corrected_text, error_analysis, output
     except openai.error.APIError as e:
-        logger.error(f"OpenAI API error: {str(e)}")
+        logger.error("OpenAI API error: {str(e)}")
         raise
     except Exception as e:
-        logger.error(f"Error occurred: {str(e)}")
+        logger.error("Error occurred: {str(e)}")
         raise
 
+'''
+Extract data
+'''
 def extract_data(output):
     corrected_text = ""
     error_summary = ""
@@ -76,6 +89,9 @@ def extract_data(output):
             error_summary = line.split(":", 1)[1].strip()
     return corrected_text, error_summary
 
+'''
+Analyze grammar
+'''
 def analyze_errors(error_summary):
     error_analysis = {
         "spelling": 0,

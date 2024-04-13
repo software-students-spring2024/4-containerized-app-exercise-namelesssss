@@ -5,9 +5,13 @@ Web applicaiton for our machine learning client that takes in text and corrects 
 from flask import Flask, request, jsonify, render_template
 from machineClient.grammar_check import check_grammar
 from machineClient.db import store_results
+#pylint: disable=import-error
 
 app = Flask(__name__)
 
+'''
+home page of the web app
+'''
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
@@ -22,6 +26,9 @@ def home():
         )
     return render_template('home.html')
 
+'''
+call to analyze the user inputed text with grammar checker
+'''
 @app.route("/analyze", methods=["POST"])
 def analyze_passage():
     try:
