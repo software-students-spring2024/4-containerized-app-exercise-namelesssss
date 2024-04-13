@@ -2,7 +2,9 @@ version: '3'
 
 services:
   front-end:
-    build: ./web-app
+    build:
+      context: .
+      dockerfile: Dockerfile-web-app
     ports:
       - 5001:5001
     depends_on:
