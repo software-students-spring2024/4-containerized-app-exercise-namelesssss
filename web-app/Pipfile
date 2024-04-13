@@ -11,6 +11,7 @@ pymongo = "*"
 pylint = "*"
 black = "*"
 tomli = "*"
+dill = "*"
 
 [dev-packages]
 
