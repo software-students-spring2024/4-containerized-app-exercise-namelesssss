@@ -69,10 +69,10 @@ def check_grammar(passage):
         error_analysis = analyze_errors(error_summary)
         return passage, corrected_text, error_analysis, output
     except openai.error.APIError as e:
-        logger.error("OpenAI API error: {str(e)}")
+        logger.error(f"OpenAI API error: {str(e)}")
         raise
     except Exception as e:
-        logger.error("Error occurred: {str(e)}")
+        logger.error(f"Error occurred: {str(e)}")
         raise
 
 '''

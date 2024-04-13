@@ -6,6 +6,7 @@ from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from app_config import MONGODB_URI
 # pylint: disable=broad-exception-caught
+# pylint: disable=missing-function-docstring
 
 uri = MONGODB_URI
 client = MongoClient(uri,

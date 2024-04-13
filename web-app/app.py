@@ -2,7 +2,8 @@
 Web applicaiton for our machine learning client that takes in text and corrects the errors.
 '''
 
-# pylint: disable=E0401
+# pylint: disable=import-error
+# pylint: disable=missing-function-docstring
 from flask import Flask, request, jsonify, render_template
 from machineClient.grammar_check import check_grammar
 from machineClient.db import store_results
