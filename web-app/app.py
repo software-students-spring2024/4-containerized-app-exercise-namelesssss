@@ -27,9 +27,6 @@ def home():
         )
     return render_template('home.html')
 
-'''
-call to analyze the user inputed text with grammar checker
-'''
 @app.route("/analyze", methods=["POST"])
 def analyze_passage():
     try:

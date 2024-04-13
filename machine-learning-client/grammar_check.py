@@ -27,7 +27,7 @@ def check_grammar(passage):
         response = openai.ChatCompletion.create(
             model="gpt-4",
             messages=[
-                { 
+                {
                     "role": "user",
                     "content": "Check the grammar of the provided text and provide the number of grammar "
                                "errors sorted by type, along with a corrected version of the text. "
@@ -75,9 +75,6 @@ def check_grammar(passage):
         logger.error(f"Error occurred: {str(e)}")
         raise
 
-'''
-Extract data
-'''
 def extract_data(output):
     corrected_text = ""
     error_summary = ""
@@ -89,9 +86,6 @@ def extract_data(output):
             error_summary = line.split(":", 1)[1].strip()
     return corrected_text, error_summary
 
-'''
-Analyze grammar
-'''
 def analyze_errors(error_summary):
     error_analysis = {
         "spelling": 0,
