@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- WIP: unsure how we want it to look -hannah -->
+    <title>Grammar Check</title>
+    <style>
+        header {
+            background-color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            box-shadow: 0px 2px 5px grey;
+        }
+        body {
+            background-color: #DDDFE1;
+            margin: 0;
+            padding: 0;
+        }
+        .containter {
+            max-width: 75%;
+            padding: 15px;
+            margin: auto;
+        }
+        .nav {
+            background-color: white;
+            padding: 20px 15px 10px 5px;
+        }
+        .input {
+            text-align: center;
+            padding-top: 20px;
+        }
+        .passages-containter {
+            text-align: center;
+        }
+        .passages {
+            display: inline-block;
+            width: 45%;
+            vertical-align: top;
+        }
+        .error {
+            text-align: center;
+        }
+        .errors {
+            margin-left: 50px;
+            text-align: left;
+        }
+    </style>
+</head>
+<header>
+    <div class="header">
+        <div class="nav">
+            <span style="font-size: 2em; font-weight: bolder; color: #1B263B;">Grammar Checker</span>
+        </div>
+    </div>
+</header>
+<body>
+    <div class="container">
+        <div class="input">
+            <form method="POST">
+                <textarea name="passage" rows="10" cols="50" placeholder="Please enter your passage."></textarea><br>
+                <input type="submit" value="Check Grammar">
+            </form>
+        </div>
+
+        <div class="results">
+            {% if fixed_passage%}
+            <div class="passages-containter">
+                <div class="passages">
+                    <h2>Original Passage:</h2>
+                    <p>{{ passage }}</p>
+                </div>
+                <div class="passages">
+                    <h2>Fixed Passage:</h2>
+                    <p>{{ fixed_passage }}</p>
+                </div>
+            </div>
+            <div class="error">
+                <h2>Error Analysis:</h2>
+                <div class="errors">
+                    <ul>
+                        <li>Spelling: {{ error_analysis["spelling"] }}</li>
+                        <li>Verb/Tense: {{ error_analysis["verb/tense"] }}</li>
+                       <li>Article/Preposition: {{ error_analysis["article/preposition"] }}</li>
+                      <li>Other: {{ error_analysis["other"] }}</li>
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
