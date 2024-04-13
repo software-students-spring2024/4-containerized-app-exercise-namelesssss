@@ -7,14 +7,13 @@ import openai
 from app_config import OPENAI_API_KEY
 # pylint: disable=line-too-long
 # pylint: disable=no-member
+# pylint: disable=missing-function-docstring
+# even though there was docstring it did not recognize, and called it a useless string.
 
 openai.api_key = OPENAI_API_KEY
 
 logger = logging.getLogger(__name__)
 
-'''
-Grammar checker from openAI
-'''
 def check_grammar(passage):
     try:
         prompt = (
@@ -69,10 +68,10 @@ def check_grammar(passage):
         error_analysis = analyze_errors(error_summary)
         return passage, corrected_text, error_analysis, output
     except openai.error.APIError as e:
-        logger.error(f"OpenAI API error: {str(e)}")
+        logger.error("OpenAI API error: %s", e)
         raise
     except Exception as e:
-        logger.error(f"Error occurred: {str(e)}")
+        logger.error("Error occurred: %s", e)
         raise
 
 def extract_data(output):
