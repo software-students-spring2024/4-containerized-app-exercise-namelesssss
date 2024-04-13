@@ -5,8 +5,8 @@ grammar checking file for our machine-learning-client
 import logging
 import openai
 from app_config import OPENAI_API_KEY
-#pylint: disable=line-too-long
-#pylint: disable=no-member
+# pylint: disable=line-too-long
+# pylint: disable=no-member
 
 openai.api_key = OPENAI_API_KEY
 

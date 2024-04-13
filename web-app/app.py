@@ -5,7 +5,7 @@ Web applicaiton for our machine learning client that takes in text and corrects 
 from flask import Flask, request, jsonify, render_template
 from machineClient.grammar_check import check_grammar
 from machineClient.db import store_results
-#pylint: disable=import-error
+# pylint: disable=import-error
 
 app = Flask(__name__)
 
