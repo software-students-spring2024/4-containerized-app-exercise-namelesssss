@@ -16,7 +16,7 @@ home page of the web app
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
-        passage = request.form['userInput']
+        passage = request.form['passage']
         original_passage, fixed_passage, error_analysis, api_response = check_grammar(passage)
         store_results(original_passage, fixed_passage, error_analysis, api_response)
         return render_template(
