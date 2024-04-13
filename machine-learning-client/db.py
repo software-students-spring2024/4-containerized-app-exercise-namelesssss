@@ -1,21 +1,24 @@
-'''
+"""
 database for machine-learning client
-'''
+"""
 
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from app_config import MONGODB_URI
+
 # pylint: disable=broad-exception-caught
 # pylint: disable=missing-function-docstring
 
 uri = MONGODB_URI
-client = MongoClient(uri,
-                     tls=True,
-                     tlsCertificateKeyFile='X509-cert-4588623656805667932.pem',
-                     server_api=ServerApi('1'))
+client = MongoClient(
+    uri,
+    tls=True,
+    tlsCertificateKeyFile="X509-cert-4588623656805667932.pem",
+    server_api=ServerApi("1"),
+)
 
 try:
-    client.admin.command('ping')
+    client.admin.command("ping")
     print("Pinged your deployment. You successfully connected to MongoDB!")
 except Exception as e:
     print(e)
@@ -23,14 +26,16 @@ except Exception as e:
 db = client["Project4"]
 collection = db["GrammarCheck"]
 
-'''
+"""
 store results into database
-'''
+"""
+
+
 def store_results(original_passage, fixed_passage, error_analysis, api_response):
     document = {
         "original_passage": original_passage,
         "fixed_passage": fixed_passage,
         "error_analysis": error_analysis,
-        "api_response": api_response
+        "api_response": api_response,
     }
     collection.insert_one(document)

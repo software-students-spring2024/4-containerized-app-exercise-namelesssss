@@ -1,6 +1,6 @@
-'''
+"""
 Used to bypass the github security feature with OPENAI API Key
-'''
+"""
 
 import os
 
