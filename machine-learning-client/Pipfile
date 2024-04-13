@@ -8,6 +8,8 @@ openai = "*"
 requests = "*"
 flask = "*"
 pymongo = "*"
+pylint = "*"
+black = "*"
 
 [dev-packages]
 
