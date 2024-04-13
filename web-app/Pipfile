@@ -6,7 +6,7 @@ name = "pypi"
 [packages]
 flask = "*"
 requests = "*"
-openai = "*"
+openai = "0.28"
 pymongo = "*"
 pylint = "*"
 black = "*"
