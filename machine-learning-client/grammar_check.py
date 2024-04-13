@@ -8,25 +8,41 @@ logger = logging.getLogger(__name__)
 
 def check_grammar(passage):
     try:
-        prompt = f"Check the grammar of the text and provide the number of grammar errors sorted by type, along with a corrected version of the text. strictly follow the following format for the result output with no additional outputs: corrected text: [text]\n error summary: [spelling:[number]];[verb/tense:[number]];[article/preposition:[number]];[other:[number]]\n\nText: {passage}"
+        prompt = (
+            f"Check the grammar of the text and provide the number of grammar errors sorted by type, along with "
+            f"a corrected version of the text. strictly follow the following format for the result output with "
+            f"no additional outputs: corrected text: [text]\n error summary: "
+            f"[spelling:[number]];[verb/tense:[number]];[article/preposition:[number]];"
+            f"[other:[number]]\n\nText: {passage}"
+        )
         response = openai.ChatCompletion.create(
             model="gpt-4",
             messages=[
                 { 
                     "role": "user",
-                    "content": "Check the grammar of the provided text and provide the number of grammar errors sorted by type, along with a corrected version of the text. strictly follow the following format for the result output with no additional outputs: corrected text: [text]\n error summary: [spelling:[number]];[verb/tense:[number]];[article/preposition:[number]];[other:[number]]\\n\\nText: {\"I drank juice.\"}"
+                    "content": "Check the grammar of the provided text and provide the number of grammar errors sorted "
+                               "by type, along with a corrected version of the text. strictly follow the following "
+                               "format for the result output with no additional outputs: corrected text: "
+                               "[text]\n error summary: [spelling:[number]];[verb/tense:[number]];"
+                               "[article/preposition:[number]];[other:[number]]\\n\\nText: {\"I drank juice.\"}"
                 },
                 {
                     "role": "assistant",
-                    "content": "Corrected text: I drink juice.\n Error summary: spelling:[0]; verb/tense:[1]; article/preposition:[0]; other:[0]"
+                    "content": "Corrected text: I drink juice.\n Error summary: spelling:[0]; verb/tense:[1]; "
+                               "article/preposition:[0]; other:[0]"
                 },
                 {
                     "role": "user",
-                    "content": "Check the grammar of the provided text and provide the number of grammar errors sorted by type, along with a corrected version of the text. strictly follow the following format for the result output with no additional outputs: corrected text: [text]\n error summary: [spelling:[number]];[verb/tense:[number]];[article/preposition:[number]];[other:[number]]\\n\\nText: {\"I wants peer juice.\"}"
+                    "content": "Check the grammar of the provided text and provide the number of grammar errors sorted "
+                               "by type, along with a corrected version of the text. strictly follow the following "
+                               "format for the result output with no additional outputs: corrected text: "
+                               "[text]\n error summary: [spelling:[number]];[verb/tense:[number]];"
+                               "[article/preposition:[number]];[other:[number]]\\n\\nText: {\"I wants peer juice.\"}"
                 },
                 {
                     "role": "assistant",
-                    "content": "Corrected text: I want pear juice.\n Error summary: spelling:[1]; verb/tense:[1]; article/preposition:[0]; other:[0]"
+                    "content": "Corrected text: I want pear juice.\n Error summary: spelling:[1]; verb/tense:[1]; "
+                               "article/preposition:[0]; other:[0]"
                 },
                 {
                     "role": "user", "content": prompt

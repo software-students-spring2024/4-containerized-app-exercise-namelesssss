@@ -1,3 +1,7 @@
+'''
+Web applicaiton for our machine learning client that takes in text and corrects the errors.
+'''
+
 from flask import Flask, request, jsonify, render_template
 from machineClient.grammar_check import check_grammar
 from machineClient.db import store_results
@@ -10,7 +14,12 @@ def home():
         passage = request.form['userInput']
         original_passage, fixed_passage, error_analysis, api_response = check_grammar(passage)
         store_results(original_passage, fixed_passage, error_analysis, api_response)
-        return render_template('home.html', passage=original_passage, fixed_passage=fixed_passage, error_analysis=error_analysis)
+        return render_template(
+            'home.html',
+            passage=original_passage,
+            fixed_passage=fixed_passage,
+            error_analysis=error_analysis
+        )
     return render_template('home.html')
 
 @app.route("/analyze", methods=["POST"])

@@ -1,3 +1,7 @@
+'''
+database for machine-learning client
+'''
+
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from app_config import MONGODB_URI
