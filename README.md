@@ -1,6 +1,6 @@
 # App Title
 
-![Lint-free](https://github.com/software-students-spring2024/4-containerized-app-exercise-namelessssscontainerized-app-exercise/actions/workflows/lint.yml/badge.svg)
+![Lint-free](https://github.com/software-students-spring2024/4-containerized-app-exercise-namelesssss/actions/workflows/lint.yml/badge.svg)
 
 # Containerized App Exercise
 
