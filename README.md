@@ -25,6 +25,9 @@ ENV OPENAI_API_KEY= OPENAI API KEY HERE
 ### Access the web app
 - Open up your web browser and enter `localhost:5001`
 
+## Testing
+To run tests for the Nameless Grammar Checker, 
+
 ## Contributors
 * [Hannah Horiuchi](https://github.com/hah8236)
 * [Jiahua Liao](https://github.com/Jiahuita)
