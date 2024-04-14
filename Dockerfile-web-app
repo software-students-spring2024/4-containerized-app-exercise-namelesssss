@@ -1,0 +1,18 @@
+FROM python:3.12-slim
+
+WORKDIR /web-app
+
+COPY /web-app /web-app
+COPY /machine-learning-client /web-app/machineClient
+RUN rm -Rf web-app/app_config.py
+COPY /web-app/requirements.txt .
+COPY app_config.py /web-app
+RUN pip3 install -r requirements.txt
+
+
+ENV OPENAI_API_KEY= OPENAI API KEY HERE
+ENV MONGODB_URI=mongodb+srv://nameless.wun5lpq.mongodb.net/?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority&appName=Nameless
+
+EXPOSE 5001
+
+CMD [ "python3", "/web-app/app.py"]

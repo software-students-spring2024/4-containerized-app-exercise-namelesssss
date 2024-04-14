@@ -1,26 +1,25 @@
-# App Title
+# Nameless Grammar Checker
 
-![Lint-free](https://github.com/software-students-spring2024/4-containerized-app-exercise-namelesssss/actions/workflows/lint.yml/badge.svg)
-
-# Containerized App Exercise
-
-Build a containerized app that uses machine learning. See [instructions](./instructions.md) for details.
-
-*insert the two bages here, also delete the above.*
+[![web-app lint-free](https://github.com/software-students-spring2024/4-containerized-app-exercise-namelesssss/actions/workflows/lint.yml/badge.svg)](https://github.com/software-students-spring2024/4-containerized-app-exercise-namelesssss/actions/workflows/lint.yml)
+[![machine-learning-client lint-free](https://github.com/software-students-spring2024/4-containerized-app-exercise-namelesssss/actions/workflows/lint.yml/badge.svg)](https://github.com/software-students-spring2024/4-containerized-app-exercise-namelesssss/actions/workflows/lint.yml)
 
 ## Description
 
-*Plain language description of our project goes here.*
+Nameless Grammar Checker is a simple grammar checker that takes user-inputted text and parses the information with OpenAI's grammar checking API. It outputs a corrected version of the inputted passage along with the number of grammatical errors it detected.
 
 ## Instructions
 
-### How to configure and run
+### API Key
+- Go to your OpenAI account and navigate to "[View API Keys](https://platform.openai.com/account/api-keys)"
+- Select "Create new secret key"
+- Copy the key and insert it into your file `Dockerfile-web-app` (replace `OPENAI API KEY HERE` with your API Key)
+```
+ENV OPENAI_API_KEY= OPENAI API KEY HERE
+```
+- Save the changes
 
-*instructions for how to configure and run all parts of your project for any developer on any platform - these instructions must work!*
-
-### How to import starter data
-
-*instructions for how to import any starter data into the database, if necessary for the system to operate correctly at first.*
+### Download File
+- Download [this]() file to acces the MongoDB Database
 
 ## Contributors
 * [Hannah Horiuchi](https://github.com/hah8236)
