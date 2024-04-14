@@ -4,15 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask = "*"
-requests = "*"
-openai = "0.28"
-pymongo = "*"
-pylint = "*"
-black = "*"
-tomli = "*"
-dill = "*"
-google-cloud-speech = "*"
 
 [dev-packages]
 
