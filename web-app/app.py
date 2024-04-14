@@ -17,6 +17,7 @@ home page of the web app
 
 @app.route("/", methods=["GET", "POST"])
 def home():
+    "Home page of the web app."
     if request.method == "POST":
         passage = request.form["passage"]
         original_passage, fixed_passage, error_analysis, api_response = check_grammar(
@@ -34,17 +35,13 @@ def home():
 
 @app.route("/analyze", methods=["POST"])
 def analyze_passage():
-    try:
-        passage = request.json["passage"]
-    except KeyError:
-        return jsonify({"error": "Missing 'passage' key in the request payload"}), 400
-
-    original_passage, fixed_passage, error_analysis, api_response = check_grammar(
-        passage
-    )
+    """Analyze the provided passage"""
+    if 'passage' not in request.json:
+        return jsonify({"Error: "Missing 'passage' key in the request payload"}), 400
+    passage = request.json["passage"]
+    original_passage, fixed_passage, error_analysis, api_response=check_grammar(passage)
     store_results(original_passage, fixed_passage, error_analysis, api_response)
     return jsonify({"fixed_passage": fixed_passage, "error_analysis": error_analysis})
-
-
+        
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5001, debug=True)
