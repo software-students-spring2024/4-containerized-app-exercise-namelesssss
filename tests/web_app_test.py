@@ -1,6 +1,7 @@
 # Web App Tests
 # Coveage Progress: 0%
 import pytest
+from web-app.app import transcribe_audio, home, analyze_passage, transcribe
 
 # Web app tests!!
 
@@ -18,23 +19,27 @@ def test_transcribe_audio():
     file_path = "path"
     # def transcribe_audio(file_path):
     # what am i returning...
+    print("transcribe_audio test has passed! ")
 
 
 def test_home_page():
     # testing the homepage
     # return render_template("home.html") 
     home = "uhhh"
+    print("home page test has passed!")
 
 
 def test_analyze_passage():
     #  return jsonify({"fixed_passage": fixed_passage, "error_analysis": error_analysis})
     passage = "uhh"
+    print("analyze_passage test has passed!")
 
 
 def test_transcribe():
     # return jsonify({"transcript": transcript})
     # transcribes the audio file
     audio_file = "uhh"
+    print("transcribe test has passed!")
 
 # might not need after all...
 '''
