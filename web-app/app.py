@@ -7,15 +7,14 @@ import io
 from flask import Flask, request, jsonify, render_template
 from machineClient.grammar_check import check_grammar
 from machineClient.db import store_results
-from google.cloud import speech
+from google.cloud import speech_v1p1beta1 as speech
 app = Flask(__name__)
 """
 home page of the web app
 """
 def transcribe_audio(file_path):
     client = speech.SpeechClient()
-    with io.open(file_path, "rb") as audio_file:
-        content = audio_file.read()
+    content = audio_file.read()
     audio = speech.RecognitionAudio(content=content)
     config = speech.RecognitionConfig(
         encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
