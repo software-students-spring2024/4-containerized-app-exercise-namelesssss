@@ -59,24 +59,3 @@ def test_analyze_error():
     passage = "uhhh"
     # def analyze_errors
     # return error_analysis
-
-
-
-
-# just test like every function idk... - hannah
-
-#grammar py:
-
-
-
-
-
-
-# i'd say, i should just call these directly?? i think??
-# but also idk fully for sure... i need to see this once we get the app running again
-
-
-# testing the db.py
-
-# honeslty db.py might be the focus for this??? since web app tests the other functionality?
-# idk
