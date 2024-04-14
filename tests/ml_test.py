@@ -1,5 +1,8 @@
-from machine-learning-client.grammar_check import check_grammar, extract_data, analyze_errors
-from machine-learning-client.db import store_results
+import pytest
+import sys
+sys.path.append("machine-learning-client")
+from grammar_check import check_grammar, extract_data, analyze_errors
+from db import store_results
 
 def test_check_grammar():
     passage = "This is a test passage with some grammer errors. It have a few spelling mistake and verb tense isues."
