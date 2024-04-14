@@ -12,7 +12,7 @@ app = Flask(__name__)
 """
 home page of the web app
 """
-def transcribe_audio(file_path):
+def transcribe_audio(audio_file):
     client = speech.SpeechClient()
     content = audio_file.read()
     audio = speech.RecognitionAudio(content=content)
@@ -22,8 +22,10 @@ def transcribe_audio(file_path):
         language_code="en-US",
     )
     response = client.recognize(config=config, audio=audio)
+    transcript = ""
     for result in response.results:
-        return format(result.alternatives[0].transcript)
+        transcript += format(result.alternatives[0].transcript) + " "
+    return transcript.strip()
 @app.route("/", methods=["GET", "POST"])
 def home():
     "Home page of the web app."
