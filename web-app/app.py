@@ -37,7 +37,7 @@ def home():
 def analyze_passage():
     """Analyze the provided passage"""
     if 'passage' not in request.json:
-        return jsonify({"Error: "Missing 'passage' key in the request payload"}), 400
+        return jsonify({"Error": "Missing 'passage' key in the request payload"}), 400
     passage = request.json["passage"]
     original_passage, fixed_passage, error_analysis, api_response=check_grammar(passage)
     store_results(original_passage, fixed_passage, error_analysis, api_response)
