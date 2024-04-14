@@ -12,8 +12,32 @@ import pytest
 # repeat assert things until every part of that portion is tested
 
 # I want peer jiuce = I want pear juice
-# Who am you = who are you
+# Who am you = who are you\
 
+def test_transcribe_audio():
+    file_path = "path"
+    # def transcribe_audio(file_path):
+    # what am i returning...
+
+
+def test_home_page():
+    # testing the homepage
+    # return render_template("home.html") 
+    home = "uhhh"
+
+
+def test_analyze_passage():
+    #  return jsonify({"fixed_passage": fixed_passage, "error_analysis": error_analysis})
+    passage = "uhh"
+
+
+def test_transcribe():
+    # return jsonify({"transcript": transcript})
+    # transcribes the audio file
+    audio_file = "uhh"
+
+# might not need after all...
+'''
 def test_text_no_mistakes():
     passage = "I am perfect."
     expected_passage = "I am perfect."
@@ -47,9 +71,11 @@ def test_voice_no_mistakes():
 
 def test_voice_mistakes():
     # test a sound file too, not just via microphone
-    expected_heard = "He be running."
-    expected_passage = "He is running."
+    expected_heard = "Who am you?"
+    expected_passage = "Who are you?"
     # expected_error_analysis = 
     # assert expected_heard = the speech to text
     # assert expected_passage = [GETTING THE OUTCOME FOR THAT]
     # assert expected_error_analysis = [GETTING THE OUTCOME FOR THAT PT 2]
+
+'''
