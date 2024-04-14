@@ -12,7 +12,9 @@ import pytest
 # repeat assert things until every part of that portion is tested
 
 # I want peer jiuce = I want pear juice
-# Who am you = who are you
+# Who am you = who are you\
+
+# honestly don't need all of this, i think if i just test each function once it's all fine
 
 def test_text_no_mistakes():
     passage = "I am perfect."
@@ -47,8 +49,8 @@ def test_voice_no_mistakes():
 
 def test_voice_mistakes():
     # test a sound file too, not just via microphone
-    expected_heard = "He be running."
-    expected_passage = "He is running."
+    expected_heard = "Who am you?"
+    expected_passage = "Who are you?"
     # expected_error_analysis = 
     # assert expected_heard = the speech to text
     # assert expected_passage = [GETTING THE OUTCOME FOR THAT]
