@@ -3,11 +3,11 @@ Web applicaiton for our machine learning client that takes in text and corrects 
 """
 # pylint: disable=import-error
 # pylint: disable=missing-function-docstring
+import io
 from flask import Flask, request, jsonify, render_template
 from machineClient.grammar_check import check_grammar
 from machineClient.db import store_results
-from google.cloud import speech 
-import io 
+from google.cloud import speech
 app = Flask(__name__)
 """
 home page of the web app
