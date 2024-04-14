@@ -12,14 +12,18 @@ Nameless Grammar Checker is a simple grammar checker that takes user-inputted te
 ### API Key
 - Go to your OpenAI account and navigate to "[View API Keys](https://platform.openai.com/account/api-keys)"
 - Select "Create new secret key"
-- Copy the key and insert it into your file `Dockerfile-web-app` (replace `OPENAI API KEY HERE` with your API Key)
+- Copy the key and insert it into your file `Dockerfile-web-app` (replace `OPENAI API KEY HERE` with your API Key). Alternatively, use `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` if you do not have one.
 ```
 ENV OPENAI_API_KEY= OPENAI API KEY HERE
 ```
 - Save the changes
 
-### Download File
-- Download [this]() file to acces the MongoDB Database
+### Run the grammar checker with Docker
+- Now, open up your terminal and navigate to the root folder
+- Run the command `docker-compose up`
+
+### Access the web app
+- Open up your web browser and enter `localhost:5001`
 
 ## Contributors
 * [Hannah Horiuchi](https://github.com/hah8236)
