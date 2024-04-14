@@ -1,7 +1,6 @@
 """
 Web applicaiton for our machine learning client that takes in text and corrects the errors.
 """
-
 # pylint: disable=import-error
 # pylint: disable=missing-function-docstring
 from flask import Flask, request, jsonify, render_template
@@ -26,7 +25,6 @@ def transcribe_audio(file_path):
     response = client.recognize(config=config, audio=audio)
     for result in response.results:
         return format(result.alternatives[0].transcript)
-        
 @app.route("/", methods=["GET", "POST"])
 def home():
     "Home page of the web app."
@@ -43,7 +41,6 @@ def home():
             error_analysis=error_analysis,
         )
     return render_template("home.html")
-
 @app.route("/analyze", methods=["POST"])
 def analyze_passage():
     """Analyze the provided passage"""
@@ -53,7 +50,6 @@ def analyze_passage():
     original_passage, fixed_passage, error_analysis, api_response=check_grammar(passage)
     store_results(original_passage, fixed_passage, error_analysis, api_response)
     return jsonify({"fixed_passage": fixed_passage, "error_analysis": error_analysis})
-    
 @app.route("/transcribe", methods=["POST"])
 def transcribe():
     """Transcribe the provided audio file"""
