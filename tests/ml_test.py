@@ -16,15 +16,15 @@ def test_check_grammar():
     print("check_grammar test passed!")
 
 def test_extract_data():
-    output = "Corrected text: This is a test passage.\n Error summary: spelling:[0]; verb/tense:[0]; article/preposition:[0]; other:[0]"
+    output = "Corrected text: This is a test passage.\nError summary: spelling: [0]; verb/tense: [0]; article/preposition: [0]; other: [0]"
     corrected_text, error_summary = extract_data(output)
 
     assert corrected_text == "This is a test passage."
-    assert error_summary == "spelling:[0]; verb/tense:[0]; article/preposition:[0]; other:[0]"
+    assert error_summary == "Error summary: spelling: [0]; verb/tense: [0]; article/preposition: [0]; other: [0]"
     print("extract_data test passed!")
 
 def test_analyze_errors():
-    error_summary = "spelling:[2]; verb/tense:[1]; article/preposition:[0]; other:[1]"
+    error_summary = "Error summary: spelling: [2]; verb/tense: [1]; article/preposition: [0]; other: [1]"
     error_analysis = analyze_errors(error_summary)
 
     assert error_analysis == {
@@ -44,7 +44,7 @@ def test_store_results():
         "article/preposition": 0,
         "other": 0,
     }
-    api_response = "Corrected text: This is a test passage.\n Error summary: spelling:[0]; verb/tense:[0]; article/preposition:[0]; other:[0]"
+    api_response = "Corrected text: This is a test passage.\nError summary: spelling: [0]; verb/tense: [0]; article/preposition: [0]; other: [0]"
 
     store_results(original_passage, corrected_text, error_analysis, api_response)
     print("store_results test passed!")
