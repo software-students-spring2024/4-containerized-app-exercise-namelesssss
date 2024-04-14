@@ -8,7 +8,6 @@ from flask import Flask, request, jsonify, render_template
 from machineClient.grammar_check import check_grammar
 from machineClient.db import store_results
 from google.cloud import speech
-# from google.cloud import speech_v1p1beta1 as speech
 
 app = Flask(__name__)
 """
