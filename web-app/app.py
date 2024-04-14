@@ -1,13 +1,13 @@
-"""
-Web application for our machine learning client that takes in text and corrects the errors.
-"""
 # pylint: disable=import-error
+import os
+import deepspeech
+import numpy as np
 from flask import Flask, request, jsonify, render_template
 from machineClient.grammar_check import check_grammar
 from machineClient.db import store_results
-import deepspeech
-import numpy as np
+
 app = Flask(__name__)
+
 def transcribe_audio(audio_file):
     """
     Transcribe the provided audio file using DeepSpeech
@@ -17,6 +17,7 @@ def transcribe_audio(audio_file):
     buffer = np.frombuffer(audio_file.read(), dtype=np.int16)
     transcript = model.stt(buffer)
     return transcript.strip()
+
 @app.route("/", methods=["GET", "POST"])
 def home():
     """
@@ -35,6 +36,7 @@ def home():
             error_analysis=error_analysis,
         )
     return render_template("home.html")
+
 @app.route("/analyze", methods=["POST"])
 def analyze_passage():
     """
@@ -48,6 +50,7 @@ def analyze_passage():
     )
     store_results(original_passage, fixed_passage, error_analysis, api_response)
     return jsonify({"fixed_passage": fixed_passage, "error_analysis": error_analysis})
+
 @app.route("/transcribe", methods=["POST"])
 def transcribe():
     """
@@ -59,7 +62,16 @@ def transcribe():
             400,
         )
     audio_file = request.files["audio_file"]
-    transcript = transcribe_audio(audio_file)
-    return jsonify({"transcript": transcript})
+    if audio_file.filename == '':
+        return jsonify({"Error": "No selected file"}), 400
+    if audio_file and allowed_file(audio_file.filename):
+        transcript = transcribe_audio(audio_file)
+        return jsonify({"transcript": transcript})
+    return jsonify({"Error": "Invalid file type"}), 400
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in {'wav', 'mp3', 'ogg'}
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5001, debug=True)
