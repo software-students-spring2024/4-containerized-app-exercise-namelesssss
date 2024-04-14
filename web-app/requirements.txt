@@ -11,7 +11,6 @@ dill==0.3.8; python_version >= '3.8'
 distro==1.9.0; python_version >= '3.6'
 dnspython==2.6.1; python_version >= '3.8'
 flask==3.0.3; python_version >= '3.8'
-google-cloud-speech==2.26.0
 h11==0.14.0; python_version >= '3.7'
 httpcore==1.0.5; python_version >= '3.8'
 httpx==0.27.0; python_version >= '3.8'

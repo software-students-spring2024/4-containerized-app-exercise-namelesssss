@@ -12,7 +12,6 @@ pylint = "*"
 black = "*"
 tomli = "*"
 dill = "*"
-google-cloud-speech = "*"
 
 [dev-packages]
 
