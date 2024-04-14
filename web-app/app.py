@@ -4,7 +4,6 @@ Web applicaiton for our machine learning client that takes in text and corrects 
 
 # pylint: disable=import-error
 # pylint: disable=missing-function-docstring
-import io
 from flask import Flask, request, jsonify, render_template
 from machineClient.grammar_check import check_grammar
 from machineClient.db import store_results
@@ -14,12 +13,15 @@ app = Flask(__name__)
 """
 home page of the web app
 """
+<<<<<<< HEAD
 
 
 def transcribe_audio(file_path):
+=======
+def transcribe_audio(audio_file):
+>>>>>>> c7dcba276270b377764b33e1084795af4a47df4a
     client = speech.SpeechClient()
-    with io.open(file_path, "rb") as audio_file:
-        content = audio_file.read()
+    content = audio_file.read()
     audio = speech.RecognitionAudio(content=content)
     config = speech.RecognitionConfig(
         encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
@@ -27,10 +29,16 @@ def transcribe_audio(file_path):
         language_code="en-US",
     )
     response = client.recognize(config=config, audio=audio)
+    transcript = ""
     for result in response.results:
+<<<<<<< HEAD
         return format(result.alternatives[0].transcript)
 
 
+=======
+        transcript += format(result.alternatives[0].transcript) + " "
+    return transcript.strip()
+>>>>>>> c7dcba276270b377764b33e1084795af4a47df4a
 @app.route("/", methods=["GET", "POST"])
 def home():
     "Home page of the web app."
