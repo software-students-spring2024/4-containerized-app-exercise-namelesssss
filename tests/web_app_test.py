@@ -11,6 +11,9 @@ import pytest
 # assert THING == THING2
 # repeat assert things until every part of that portion is tested
 
+# I want peer jiuce = I want pear juice
+# Who am you = who are you
+
 def test_text_no_mistakes():
     passage = "I am perfect."
     expected_passage = "I am perfect."
@@ -28,5 +31,25 @@ def test_text_mistakes():
     passage = "He be runnin."
     expected_passage = "He is running."
     # expected_error_analysis = 
+    # assert expected_passage = [GETTING THE OUTCOME FOR THAT]
+    # assert expected_error_analysis = [GETTING THE OUTCOME FOR THAT PT 2]
+
+
+def test_voice_no_mistakes():
+    # test a sound file too, not just via microphone
+    expected_heard = "I am perfect."
+    expected_passage = "I am perfect."
+    # expected_error_analysis = 
+    # assert expected_heard = the speech to text
+    # assert expected_passage = [GETTING THE OUTCOME FOR THAT]
+    # assert expected_error_analysis = [GETTING THE OUTCOME FOR THAT PT 2]
+
+
+def test_voice_mistakes():
+    # test a sound file too, not just via microphone
+    expected_heard = "He be running."
+    expected_passage = "He is running."
+    # expected_error_analysis = 
+    # assert expected_heard = the speech to text
     # assert expected_passage = [GETTING THE OUTCOME FOR THAT]
     # assert expected_error_analysis = [GETTING THE OUTCOME FOR THAT PT 2]
