@@ -16,16 +16,15 @@
             <input type="submit" value="Check Grammar">
         </form>
         {% if fixed_passage %}
-        <h2>Original Passage:</h2>h2>
+        <h2>Original Passage:</h2>
         <p>{{ passage }}</p>
-        <h2>Fixed Passage</h2>
+        <h2>Fixed Passage:</h2>
         <p>{{ fixed_passage }}</p>
         <h2>Error Analysis:</h2>
         <ul>
             <li>Spelling: {{ error_analysis["spelling"] }}</li>
             <li>Verb/Tense: {{ error_analysis["verb/tense"] }}</li>
-            <li>Article/Preposition: {{ error_analysisp["article/preposition"] }}</li>
-            <li>Other: {{ error </li>
+            <li>Article/Preposition: {{ error_analysis["article/preposition"] }}</li>
             <li>Other: {{ error_analysis["other"] }}</li>
         </ul>
         {% endif %}
