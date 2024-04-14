@@ -1,8 +1,6 @@
-# Machine Learning Tests
-# Coveage Progress: 0%
 import pytest
 
-# Machine learning tests!!
+# Web app tests!!
 
 # ** STRUCUTRE **
 # def test_namey_name():
