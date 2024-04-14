@@ -12,7 +12,7 @@ Nameless Grammar Checker is a simple grammar checker that takes user-inputted te
 ### API Key
 - Go to your OpenAI account and navigate to "[View API Keys](https://platform.openai.com/account/api-keys)"
 - Select "Create new secret key"
-- Copy the key and insert it into your file `Dockerfile-web-app` (replace `OPENAI API KEY HERE` with your API Key). Alternatively, use [this](https://docs.google.com/document/d/1EczE__RJvVKTikYvHHtuQ-0u92QCvKg3TYBN5e4fWgk/edit?usp=sharing) key if you do not have one.
+- Copy the key and insert it into your file `Dockerfile-web-app` (replace `OPENAI API KEY HERE` with your API Key). Alternatively, use [this](https://docs.google.com/document/d/1EczE__RJvVKTikYvHHtuQ-0u92QCvKg3TYBN5e4fWgk/edit?usp=sharing) key if you do not have one (Use a NYU Email).
 ```
 ENV OPENAI_API_KEY= OPENAI API KEY HERE
 ```
