@@ -12,24 +12,64 @@
             <h5>&nbsp&nbspCharacter Limit: 256</h5>
         </div>
     </header>
-    <div class="container">
-        <form method="POST">
-            <textarea name="passage" rows="10" placeholder="Please enter your passage."></textarea>
-            <input type="submit" value="Check Grammar">
-        </form>
-        {% if fixed_passage %}
-        <h2>Original Passage:</h2>
-        <p>{{ passage }}</p>
-        <h2>Fixed Passage:</h2>
-        <p>{{ fixed_passage }}</p>
-        <h2>Error Analysis:</h2>
-        <ul>
-            <li>Spelling: {{ error_analysis["spelling"] }}</li>
-            <li>Verb/Tense: {{ error_analysis["verb/tense"] }}</li>
-            <li>Article/Preposition: {{ error_analysis["article/preposition"] }}</li>
-            <li>Other: {{ error_analysis["other"] }}</li>
-        </ul>
-        {% endif %}
-    </div>
+    </header>
+    <main>
+        <div class="container">
+            <form method="POST" enctype="multipart/form-data">
+                <label for="passage">Enter your passage:</label>
+                <textarea id="passage" name="passage" rows="10" placeholder="Please enter your passage."></textarea>
+                <label for="audio_file">Select an audio file:</label>
+                <input type="file" id="audio_file" name="audio_file" accept="audio/*">
+                <button type="button" id="record-button">Record Audio</button>
+                <input type="hidden" id="audio_data" name="audio_data">
+                <input type="submit" value="Check Grammar">
+            </form>
+            {% if fixed_passage %}
+            <section>
+                <h2>Original Passage:</h2>
+                <p>{{ passage }}</p>
+                <h2>Fixed Passage:</h2>
+                <p>{{ fixed_passage }}</p>
+                <h2>Error Analysis:</h2>
+                <ul>
+                    <li>Spelling: {{ error_analysis["spelling"] }}</li>
+                    <li>Verb/Tense: {{ error_analysis["verb/tense"] }}</li>
+                    <li>Article/Preposition: {{ error_analysis["article/preposition"] }}</li>
+                    <li>Other: {{ error_analysis["other"] }}</li>
+                </ul>
+            </section>
+            {% endif %}
+        </div>
+    </main>
+    <script>
+        const recordButton = document.getElementById('record-button');
+        const audioDataInput = document.getElementById('audio_data');
+        let mediaRecorder;
+        let chunks = [];
+
+        recordButton.addEventListener('click', function() {
+            if (mediaRecorder && mediaRecorder.state === 'recording') {
+                mediaRecorder.stop();
+                recordButton.textContent = 'Record Audio';
+            } else {
+                navigator.mediaDevices.getUserMedia({ audio: true })
+                    .then(function(stream) {
+                        mediaRecorder = new MediaRecorder(stream);
+                        mediaRecorder.start();
+                        recordButton.textContent = 'Stop Recording';
+
+                        mediaRecorder.addEventListener('dataavailable', function(e) {
+                            chunks.push(e.data);
+                        });
+
+                        mediaRecorder.addEventListener('stop', function() {
+                            const blob = new Blob(chunks, { type: 'audio/webm' });
+                            chunks = [];
+                            audioDataInput.value = URL.createObjectURL(blob);
+                        });
+                    });
+            }
+        });
+    </script>
 </body>
 </html>

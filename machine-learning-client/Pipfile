@@ -12,6 +12,7 @@ pylint = "*"
 black = "*"
 tomli = "*"
 dill = "*"
+typing-extensions = "*"
 
 [dev-packages]
 

@@ -13,6 +13,7 @@ black = "*"
 tomli = "*"
 dill = "*"
 google-cloud-speech = "*"
+typing-extensions = "*"
 
 [dev-packages]
 
